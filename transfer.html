@@ -119,6 +119,15 @@ header{background:var(--white);border-bottom:1px solid #e5e7eb;padding:0 24px;he
 .restart-btn{display:inline-flex;align-items:center;gap:7px;padding:12px 26px;border:2px solid #e5e7eb;border-radius:99px;font-size:.88rem;font-weight:700;color:var(--gray);background:white;cursor:pointer;transition:all .2s;}
 .restart-btn:hover{border-color:var(--blue);color:var(--blue);}
 
+/* video */
+.video-toggle-btn{display:flex;align-items:center;gap:6px;background:none;border:none;cursor:pointer;padding:0;margin-left:auto;flex-shrink:0;}
+.play-icon{width:36px;height:36px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;transition:transform .2s,background .2s;flex-shrink:0;}
+.play-icon svg{margin-left:2px;}
+.teacher-card:hover .play-icon{background:var(--blue-dark);transform:scale(1.08);}
+.video-wrap{display:none;padding:0 18px 16px;}
+.video-wrap.open{display:block;}
+.video-wrap iframe{width:100%;border-radius:10px;border:none;aspect-ratio:16/9;}
+
 .time-btn.selected{border-color:var(--blue);background:var(--blue-mid);color:var(--blue);}
 .time-btn.selected .time-day{color:var(--blue-dark);}
 .time-btn.selected .time-hour{color:var(--blue-dark);}
@@ -333,6 +342,7 @@ var TEACHERS = {
   jane_yellow: {
     key: 'jane_yellow', name: '제인 진짜영어', emoji: '👩‍🏫', color: 'yellow', colorName: '기초',
     sub: '오전/오후 교차수강 가능',
+    video: 'https://drive.google.com/file/d/1apO_niKYYKUbqwcFVW_R2hr4RJz58pyh/preview',
     tags: [['기초','yellow'],['교차수강 가능','green']],
     schedules: [
       { label:'월수 오전 10:30', day:'월수', time:'오전 10:30', ampm:'am', cross:true },
@@ -345,6 +355,7 @@ var TEACHERS = {
   jane_purple: {
     key: 'jane_purple', name: '제인 진짜영어', emoji: '👩‍🏫', color: 'purple', colorName: '패턴',
     sub: '오전/오후 교차수강 가능',
+    video: 'https://drive.google.com/file/d/1apO_niKYYKUbqwcFVW_R2hr4RJz58pyh/preview',
     tags: [['패턴','purple'],['교차수강 가능','green']],
     schedules: [
       { label:'화목 오후 12:00', day:'화목', time:'오후 12:00', ampm:'pm', cross:true },
@@ -356,6 +367,7 @@ var TEACHERS = {
   riley_yellow: {
     key: 'riley_yellow', name: '라일리 Right영어', emoji: '👨‍🏫', color: 'yellow', colorName: '기초',
     sub: '오후/주말 교차수강 가능',
+    video: 'https://drive.google.com/file/d/1x8woSamAT44Qu7DP48W9QYLjYbLzOirz/preview',
     tags: [['기초','yellow'],['교차수강 가능','green']],
     schedules: [
       { label:'월수 오후 8:30',  day:'월수', time:'오후 8:30',  ampm:'pm', cross:true },
@@ -366,6 +378,7 @@ var TEACHERS = {
   riley_purple: {
     key: 'riley_purple', name: '라일리 Right영어', emoji: '👨‍🏫', color: 'purple', colorName: '패턴',
     sub: '오후/주말 교차수강 가능',
+    video: 'https://drive.google.com/file/d/1x8woSamAT44Qu7DP48W9QYLjYbLzOirz/preview',
     tags: [['패턴','purple'],['교차수강 가능','green']],
     schedules: [
       { label:'월수 오후 8:30',  day:'월수', time:'오후 8:30',  ampm:'pm', cross:true },
@@ -377,6 +390,7 @@ var TEACHERS = {
   tina_purple: {
     key: 'tina_purple', name: '티나 트렌디영어', emoji: '🌟', color: 'yellow', colorName: '기초',
     sub: '월수 오전/오후 교차수강 가능',
+    video: 'https://drive.google.com/file/d/1R7Ps64JbKydIe7QcgS5_HeMOjH1AHmtT/preview',
     tags: [['기초','yellow'],['교차수강 가능','green']],
     schedules: [
       { label:'월수 오전 10:30', day:'월수', time:'오전 10:30', ampm:'am', cross:true },
@@ -400,6 +414,7 @@ var TEACHERS = {
   courtney_purple: {
     key: 'courtney_purple', name: '코트니 Go-To영어', emoji: '👩‍🎓', color: 'purple', colorName: '스피킹',
     sub: '요일 교차수강 가능',
+    video: 'https://drive.google.com/file/d/1lKGIgXGOGXdpvV4_M_uUPla2cgQO_qVZ/preview',
     tags: [['스피킹','purple'],['교차수강 가능','green']],
     schedules: [
       { label:'화목 오전 10:30', day:'화목', time:'오전 10:30', ampm:'am', cross:true },
@@ -411,6 +426,7 @@ var TEACHERS = {
   courtney_sky: {
     key: 'courtney_sky', name: '코트니 Go-To영어', emoji: '👩‍🎓', color: 'sky', colorName: '스피킹',
     sub: '요일 교차수강 가능',
+    video: 'https://drive.google.com/file/d/1lKGIgXGOGXdpvV4_M_uUPla2cgQO_qVZ/preview',
     tags: [['스피킹','sky'],['교차수강 가능','green']],
     schedules: [
       { label:'월수 오후 8:30', day:'월수', time:'오후 8:30', ampm:'pm', cross:true },
@@ -421,6 +437,7 @@ var TEACHERS = {
   study: {
     key: 'study', name: '원어민 회화스터디', emoji: '🌍', color: 'sky', colorName: '스피킹',
     sub: '원어민과 프리토킹 · 최고 레벨',
+    video: 'https://drive.google.com/file/d/1JIm4vRMicguPvbZAkwbyEkV90avNgoFu/preview',
     tags: [['스피킹','sky'],['월수·화목·주말','gray']],
     schedules: [
       { label:'월수 오전 11:00', day:'월수', time:'오전 11:00', ampm:'am', cross:false },
@@ -620,6 +637,16 @@ function confirmStudy() {
   hist.push(6); showStep(6);
 }
 
+function toggleVideo(e, key) {
+  e.stopPropagation();
+  var wrap = document.getElementById('video-'+key);
+  if (!wrap) return;
+  var isOpen = wrap.classList.contains('open');
+  // 모든 영상 닫기
+  document.querySelectorAll('.video-wrap').forEach(function(w){ w.classList.remove('open'); });
+  if (!isOpen) wrap.classList.add('open');
+}
+
 // ═══════════════════════════════════════════════════════
 //  STEP 4
 // ═══════════════════════════════════════════════════════
@@ -656,6 +683,22 @@ function buildTeachers() {
 
     var div = document.createElement('div');
     div.className = 'teacher-card';
+    var videoHTML = t.video
+      ? '<div class="video-wrap" id="video-'+k+'">'+
+          '<iframe src="'+t.video+'" allowfullscreen allow="autoplay"></iframe>'+
+        '</div>'
+      : '';
+
+    var playBtn = t.video
+      ? '<button class="video-toggle-btn" onclick="toggleVideo(event,\''+k+'\')" title="수업 영상 보기">'+
+          '<div class="play-icon">'+
+            '<svg width="14" height="14" viewBox="0 0 14 14" fill="none">'+
+              '<polygon points="3,1 13,7 3,13" fill="white"/>'+
+            '</svg>'+
+          '</div>'+
+        '</button>'
+      : '<div class="t-arrow">›</div>';
+
     div.innerHTML =
       '<div class="teacher-card-inner">'+
         '<div class="t-emoji" style="background:var(--'+t.color+'-light)">'+t.emoji+'</div>'+
@@ -664,9 +707,11 @@ function buildTeachers() {
           '<div class="t-sub">'+t.sub+'</div>'+
           '<div class="t-tags">'+tagHTML+'</div>'+
         '</div>'+
-        '<div class="t-arrow">›</div>'+
-      '</div>';
-    div.onclick = (function(key){ return function(){
+        playBtn+
+      '</div>'+
+      videoHTML;
+    div.onclick = (function(key){ return function(e){
+      if (e.target.closest('.video-toggle-btn')) return;
       state.teacherKey = key;
       if (key === 'study') {
         studySelectedDay = null;
